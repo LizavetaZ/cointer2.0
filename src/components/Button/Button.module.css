@@ -1,0 +1,19 @@
+.activebutton, .disbutton {
+    display: inline-block;
+    background-color: #7bc4bc;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px; /* add margin to the right */
+    width: 80px;
+    height: 30px;
+    font-size: 20px;
+}
+
+.activebutton:active {
+    background-color: #2b8999;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+    color: white;
+}
