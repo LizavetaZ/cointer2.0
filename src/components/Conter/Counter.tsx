@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../Button/Button";
 import s from './Counter.module.css'
-import {setCounterAC} from "../../reducer/MainReducer";
+import {setCounterAC} from "../../reducer/mainReducer";
 import {RootReducerType} from "../../store/store";
 import {useDispatch, useSelector} from "react-redux";
 

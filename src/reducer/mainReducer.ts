@@ -1,4 +1,4 @@
-export type SetterPropsType = {
+export type ReducerPropsType = {
     minimumValue: number
     maximumValue: number
     counter: number
@@ -11,7 +11,7 @@ export type SetterPropsType = {
     setCounter: (counter: number) => void
 }
 
-export const initialState: SetterPropsType = {
+export const initialState: ReducerPropsType = {
     minimumValue: 0,
     maximumValue: 4,
     counter: 0,
@@ -28,7 +28,7 @@ export const initialState: SetterPropsType = {
     },
 };
 
-export const mainReducer = (state: SetterPropsType = initialState, action: RootSetterType): SetterPropsType => {
+export const mainReducer = (state: ReducerPropsType = initialState, action: RootSetterType): ReducerPropsType => {
     switch (action.type) {
         case 'SET-MAX-VALUE':
             return {...state, maximumValue: action.payload.value};

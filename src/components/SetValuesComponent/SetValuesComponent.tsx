@@ -2,7 +2,7 @@ import React, {ChangeEvent} from 'react';
 import s from './SetValuesComponent.module.css'
 import {RootReducerType} from "../../store/store";
 import {useDispatch, useSelector} from "react-redux";
-import {setStartValueAC} from "../../reducer/MainReducer";
+import {setStartValueAC} from "../../reducer/mainReducer";
 
 export type SetValuesComponentType = {
     name: string

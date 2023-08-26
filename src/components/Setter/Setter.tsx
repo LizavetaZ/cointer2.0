@@ -9,7 +9,7 @@ import {
     setIsChangedAC,
     setMaxValueAC,
     setMinValueAC
-} from "../../reducer/MainReducer";
+} from "../../reducer/mainReducer";
 import {useDispatch, useSelector} from "react-redux";
 import {RootReducerType} from "../../store/store";
 

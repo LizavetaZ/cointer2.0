@@ -1,5 +1,6 @@
-import {mainReducer} from "../reducer/MainReducer";
+
 import {combineReducers, legacy_createStore as createStore} from "redux";
+import {mainReducer} from "../reducer/mainReducer";
 
 
 export const RootReducer=combineReducers({

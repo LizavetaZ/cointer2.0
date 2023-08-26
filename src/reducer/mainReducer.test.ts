@@ -1,6 +1,6 @@
-import {mainReducer, RootSetterType, SetterPropsType} from './MainReducer';
+import {mainReducer, RootSetterType, ReducerPropsType} from './mainReducer';
 
-export const initialState: SetterPropsType = {
+export const initialState: ReducerPropsType = {
     minimumValue: 0,
     maximumValue: 0,
     counter: 0,
