@@ -13,23 +13,10 @@ import {
 import {useDispatch, useSelector} from "react-redux";
 import {RootReducerType} from "../../store/store";
 
-export type SetterPropsType = {
-    minimumValue: number
-    maximumValue: number
-    counter: number
-    error: string
-    isChanged: boolean
-    setIsChanged:(isChanged: boolean) => void
-    setMaxValue: (maximumValue: number) => void
-    setMinValue: (minimumValue: number) => void
-    setCounter: (counter: number) => void
-}
-
-
 export const Setter = () => {
 
     const dispatch = useDispatch()
-    const stateForSetter = useSelector((state: RootReducerType) => state.setter);
+    const stateForSetter = useSelector((state: RootReducerType) => state.commonState);
 
     const handleMaxValueChange = (value: number) => {
         dispatch(setMaxValueAC(value));
@@ -60,11 +47,11 @@ export const Setter = () => {
                 <SetValuesComponent
                     name={'max value'}
                     startValue={stateForSetter.maximumValue}
-                    setTitle={(value) => handleMaxValueChange(value)} error={stateForSetter.error}/>
+                    setTitle={handleMaxValueChange}/>
                 <SetValuesComponent
                     name={'min value'}
                     startValue={stateForSetter.minimumValue}
-                    setTitle={(value) => handleMinValueChange(value)} error={stateForSetter.error}/>
+                    setTitle={handleMinValueChange}/>
             </div>
             <div className={s.setButton}>
                 <Button name={'set'} callback={commonSetValue} disabled={!stateForSetter.isChanged || !!stateForSetter.error}/>

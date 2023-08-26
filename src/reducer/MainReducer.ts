@@ -4,13 +4,11 @@ export type SetterPropsType = {
     counter: number
     error: string
     isChanged: boolean
-    isSetClicked: boolean
+    startValue: number
     setIsChanged: (isChanged: boolean) => void
     setMaxValue: (maximumValue: number) => void
     setMinValue: (minimumValue: number) => void
     setCounter: (counter: number) => void
-    setValue: () => void
-    setIsSetClicked: (value: boolean) => void
 }
 
 export const initialState: SetterPropsType = {
@@ -19,7 +17,7 @@ export const initialState: SetterPropsType = {
     counter: 0,
     error: '',
     isChanged: false,
-    isSetClicked: false,
+    startValue: 0,
     setIsChanged: () => {
     },
     setMaxValue: () => {
@@ -28,13 +26,9 @@ export const initialState: SetterPropsType = {
     },
     setCounter: () => {
     },
-    setValue: () => {
-    },
-    setIsSetClicked: () => {
-    },
 };
 
-export const setterReducer = (state: SetterPropsType = initialState, action: RootSetterType): SetterPropsType => {
+export const mainReducer = (state: SetterPropsType = initialState, action: RootSetterType): SetterPropsType => {
     switch (action.type) {
         case 'SET-MAX-VALUE':
             return {...state, maximumValue: action.payload.value};
@@ -45,20 +39,6 @@ export const setterReducer = (state: SetterPropsType = initialState, action: Roo
                 return {...state, isChanged: action.payload.isChanged};
             }
             return state;
-        case 'SET-VALUE':
-            return {
-                ...state,
-                isChanged: false,
-                counter: state.minimumValue,
-                setIsSetClicked: () => setIsSetClickedAC(true)
-            };
-        case 'IS-SET-CLICKED':
-            return {
-                ...state,
-                isSetClicked: action.payload.value,
-            }
-        case 'SET-IS-SET-CLICKED':
-            return {...state, isSetClicked: action.payload.value};
         case 'SET-ERROR':
             return {
                 ...state,
@@ -74,6 +54,8 @@ export const setterReducer = (state: SetterPropsType = initialState, action: Roo
                 ...state,
                 counter: action.payload.value
             }
+        case 'SET-START-VALUE':
+            return {...state, startValue: action.payload.value};
         default:
             return state;
     }
@@ -83,22 +65,18 @@ export type RootSetterType =
     setMaxValueACType
     | setMinValueACType
     | setIsChangedACType
-    | setValueACType
-    | setIsSetClickedACType
     | setErrorACType
     | cleanErrorACType
     | setCounterACType
-    | isSetClickedACType
+    | setStartValueACType
 
 type setMaxValueACType = ReturnType<typeof setMaxValueAC>
 type setMinValueACType = ReturnType<typeof setMinValueAC>
 type setIsChangedACType = ReturnType<typeof setIsChangedAC>
-type setValueACType = ReturnType<typeof setValueAC>
-type setIsSetClickedACType = ReturnType<typeof setIsSetClickedAC>
 type setErrorACType = ReturnType<typeof setErrorAC>
 type cleanErrorACType = ReturnType<typeof cleanErrorAC>
 type setCounterACType = ReturnType<typeof setCounterAC>
-type isSetClickedACType = ReturnType<typeof isSetClickedAC>
+type setStartValueACType = ReturnType<typeof setStartValueAC>
 
 
 export const setMaxValueAC = (value: number) => {
@@ -122,19 +100,6 @@ export const setIsChangedAC = (isChanged: boolean) => {
     } as const
 }
 
-export const setValueAC = () => {
-    return {
-        type: 'SET-VALUE'
-    } as const
-}
-
-export const setIsSetClickedAC = (value: boolean) => {
-    return {
-        type: 'SET-IS-SET-CLICKED',
-        payload: {value},
-    } as const
-}
-
 export const setErrorAC = (value: string) => {
     return {
         type: 'SET-ERROR',
@@ -155,9 +120,9 @@ export const setCounterAC = (value: number) => {
     } as const
 }
 
-export const isSetClickedAC = (value: boolean) => {
+export const setStartValueAC = (value: number) => {
     return {
-        type: 'IS-SET-CLICKED',
+        type: 'SET-START-VALUE',
         payload: {value},
     } as const;
 };

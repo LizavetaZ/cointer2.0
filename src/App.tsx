@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import './App.css'
 import {Setter} from "./components/Setter/Setter";
 import s from "./components/Conter/Counter.module.css";
