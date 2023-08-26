@@ -1,21 +1,4 @@
-import {mainReducer, RootSetterType, ReducerPropsType} from './mainReducer';
-
-export const initialState: ReducerPropsType = {
-    minimumValue: 0,
-    maximumValue: 0,
-    counter: 0,
-    error: '',
-    isChanged: false,
-    startValue: 0,
-    setIsChanged: () => {
-    },
-    setMaxValue: () => {
-    },
-    setMinValue: () => {
-    },
-    setCounter: () => {
-    },
-};
+import {initialState, mainReducer, RootSetterType,} from './mainReducer';
 
 test('mainReducer should handle SET-MAX-VALUE action', () => {
     const action: RootSetterType = { type: 'SET-MAX-VALUE', payload: { value: 10 } };
